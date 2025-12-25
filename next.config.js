@@ -12,6 +12,7 @@ const nextConfig = withBundleAnalyzer({
   },
   images: {
     domains: ["https://flagcdn.com"],
+    formats: ["image/avif", "image/webp"],
   },
   webpack: (config) => {
     config.module.rules.push({

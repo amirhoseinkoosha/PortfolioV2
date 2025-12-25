@@ -12,24 +12,26 @@ import { siteMetadata } from "@/data/siteMetaData.mjs";
 export default function AboutHero() {
   return (
     <div className="mx-auto mt-0 flex max-w-7xl flex-col items-center gap-6 px-6 pt-20 text-center sm:px-14 md:mt-20 md:px-20 lg:mt-0 lg:flex-row lg:text-left">
-      <div className="w-full sm:w-1/2 md:w-2/3 lg:inline-block lg:h-full lg:w-1/2">
-        <AnimatePresence>
+      <div className="flex w-full items-center justify-center sm:w-1/2 md:w-2/3 lg:inline-block lg:h-full lg:w-1/2">
+        <AnimatePresence mode="wait">
           <FadeUp key="hero-image" duration={0.6}>
-            <DuotoneImage
-              src={heroProfileImg}
-              width={100}
-              height={100}
-              className="h-auto w-full px-0 xl:px-16"
-              alt="hero image"
-              lightColor="#E0FFFF"
-              darkColor="#004D4D"
-              unoptimized
-            />
+            <div className="relative h-64 w-64 overflow-hidden rounded-full border-4 border-accent/20 shadow-lg sm:h-80 sm:w-80 md:h-96 md:w-96 lg:h-[400px] lg:w-[400px] xl:h-[450px] xl:w-[450px]">
+              <DuotoneImage
+                src={heroProfileImg}
+                width={100}
+                height={100}
+                className=" h-full w-full object-cover object-top"
+                alt="hero image"
+                lightColor="#E0FFFF"
+                darkColor="#004D4D"
+                unoptimized
+              />
+            </div>
           </FadeUp>
         </AnimatePresence>
       </div>
       <div className="sm:1/2 mt-10 w-full lg:w-1/2">
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           <FadeUp key="title-greeting" duration={0.6}>
             <h1 className="text-6xl font-bold text-accent sm:text-7xl md:text-6xl lg:text-5xl xl:text-7xl">
               Hi, I&apos;m {siteMetadata.fullName}

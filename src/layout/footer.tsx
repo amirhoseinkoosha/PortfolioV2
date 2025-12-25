@@ -1,5 +1,5 @@
 import ContactButton from "@/components/contact-form/contact-button";
-import { GithubIcon, LinkedinIcon, TwitterIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { siteMetadata } from "@/data/siteMetaData.mjs";
 
 export default function Footer() {
@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="flex w-full flex-col items-center gap-20 bg-transparent px-6 py-8 sm:px-14 md:px-20">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 rounded-2xl bg-accent p-8 text-background sm:p-12 md:gap-12 lg:p-20">
         <div className="text-center">
-          <span className="inline-block rounded-full bg-background px-3 py-1 text-xs font-semibold uppercase text-accent md:text-sm lg:text-base">
+          <span className="inline-block rounded-full bg-background px-3 py-1 text-xs font-bold uppercase text-accent md:text-sm lg:text-base ">
             Get in touch
           </span>
         </div>
@@ -16,9 +16,9 @@ export default function Footer() {
           target="_blank"
           className="mb-6 w-full cursor-pointer text-center text-xl font-bold underline sm:text-3xl lg:text-5xl "
         >
-          <span>{siteMetadata.email.split("@")[0]}@</span>
+          <span>{siteMetadata.email.split("@")[0]}</span>
           <br />
-          <span>{siteMetadata.email.split("@")[1]}</span>
+          <span>@{siteMetadata.email.split("@")[1]}</span>
         </a>
         <div className="flex justify-center">
           <ContactButton />
@@ -35,14 +35,14 @@ export default function Footer() {
           >
             <GithubIcon className="text-accent transition-colors duration-150 hover:text-accent-foreground" />
           </a>
-          <a
+          {/* <a
             href={siteMetadata.twitter}
             target="_blank"
             className="h-6 w-6"
             aria-label="link to Twitter"
           >
             <TwitterIcon className="text-accent transition-colors duration-150 hover:text-accent-foreground" />
-          </a>
+          </a> */}
           <a
             href={siteMetadata.linkedin}
             target="_blank"
