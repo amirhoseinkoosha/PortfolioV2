@@ -8,18 +8,17 @@ export default function Projects() {
   return (
     <>
       <NextSeo
-        title="Projects by Amit Chauhan - Software Developer Portfolio"
-        description="Explore a collection of projects by Amit Chauhan, a seasoned Software Developer. From innovative web applications to responsive interfaces, discover the depth and diversity of my work."
+        title={`Projects by ${siteMetadata.fullName} - ${siteMetadata.jobTitle} Portfolio`}
+        description={`Explore a collection of projects by ${siteMetadata.fullName}, a ${siteMetadata.jobTitle}. From innovative web and mobile applications to responsive interfaces, discover the depth and diversity of my work.`}
         canonical={`${siteMetadata.siteUrl}/projects`}
         openGraph={{
           url: `${siteMetadata.siteUrl}/projects`,
-          title: "Discover Projects by Amit Chauhan - Software Developer",
-          description:
-            "Explore a showcase of projects crafted by Amit Chauhan, a Software Developer. Witness the fusion of creativity and technology in web development.",
+          title: `Discover Projects by ${siteMetadata.fullName} - ${siteMetadata.jobTitle}`,
+          description: `Explore a showcase of projects crafted by ${siteMetadata.fullName}, a ${siteMetadata.jobTitle}. Witness the fusion of creativity and technology in web and mobile development.`,
           images: [
             {
               url: `${siteMetadata.siteUrl}${siteMetadata.twitterImage}`,
-              alt: "Amit Chauhan - Portfolio Image",
+              alt: `${siteMetadata.fullName} - Portfolio Image`,
             },
           ],
           siteName: siteMetadata.siteName,
@@ -31,8 +30,11 @@ export default function Projects() {
         additionalMetaTags={[
           {
             property: "keywords",
-            content:
-              "Projects,Amit Portfolio, Software Developer, React Developer, Frontend Developer, Web Development, JavaScript, HTML, CSS, UI/UX, Web Applications, Responsive Design",
+            content: `Projects, ${siteMetadata.fullName} Portfolio, ${
+              siteMetadata.jobTitle
+            }, React Developer, Frontend Developer, Web Development, React Native, Next.js, ${siteMetadata.specializations.join(
+              ", ",
+            )}, UI/UX, Web Applications, Mobile Applications, Responsive Design`,
           },
         ]}
       />

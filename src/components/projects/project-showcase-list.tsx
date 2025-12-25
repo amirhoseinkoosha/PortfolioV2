@@ -7,6 +7,7 @@ import { classNames } from "@/utility/classNames";
 export type ProjectShowcaseListItem = {
   index: number;
   title: string;
+  description: string;
   href: string;
   tags: string[];
   image: {
@@ -63,7 +64,10 @@ export default function ProjectShowcaseList(props: ProjectShowcaseListProps) {
             )}
           ></span>
         </Link>
-        <p className="max-w-xl text-base font-semibold text-muted-foreground sm:text-lg">
+        <p className="max-w-xl text-justify text-base font-semibold text-muted-foreground sm:text-lg">
+          {props.data.description}
+        </p>
+        <p className="max-w-xl text-justify text-base font-semibold text-muted-foreground sm:text-lg">
           {props.data.tags.map((tag) => `#${tag} `)}
         </p>
       </div>

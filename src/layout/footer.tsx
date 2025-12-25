@@ -14,18 +14,18 @@ export default function Footer() {
         <a
           href={`mailto:${siteMetadata.email}`}
           target="_blank"
-          className="mb-6 cursor-pointer text-center text-2xl font-bold underline sm:text-4xl lg:text-6xl"
+          className="mb-6 w-full cursor-pointer text-center text-xl font-bold underline sm:text-3xl lg:text-5xl "
         >
-          <span>amitchauhan263871@</span>
+          <span>{siteMetadata.email.split("@")[0]}@</span>
           <br />
-          <span>gmail.com</span>
+          <span>{siteMetadata.email.split("@")[1]}</span>
         </a>
         <div className="flex justify-center">
           <ContactButton />
         </div>
       </div>
       <div className="flex w-full flex-col items-center justify-between gap-8 text-center  md:flex-row md:justify-between lg:mx-auto lg:max-w-7xl">
-        <span className="text-foreground">©2024 Amit Chauhan</span>
+        <span className="text-foreground">©2025 {siteMetadata.fullName}</span>
         <div className="flex gap-8">
           <a
             href={siteMetadata.github}

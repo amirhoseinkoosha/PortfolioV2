@@ -31,6 +31,35 @@
     @apply border-border;
   }
   body {
-    @apply min-h-screen bg-background text-foreground;
+    @apply min-h-screen text-foreground;
+    background: radial-gradient(
+        ellipse 80% 50% at 50% -20%,
+        hsl(var(--accent) / 0.08),
+        hsl(var(--background))
+      ),
+      radial-gradient(
+        ellipse 60% 50% at 50% 120%,
+        hsl(var(--accent) / 0.05),
+        hsl(var(--background))
+      ),
+      hsl(var(--background));
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background: radial-gradient(
+        ellipse 100% 50% at 50% 0%,
+        hsl(var(--accent) / 0.2) 0%,
+        hsl(var(--accent) / 0.1) 30%,
+        hsl(var(--background)) 70%
+      ),
+      radial-gradient(
+        ellipse 80% 50% at 50% 100%,
+        hsl(var(--accent) / 0.15) 0%,
+        hsl(var(--accent) / 0.05) 40%,
+        hsl(var(--background)) 80%
+      ),
+      hsl(var(--background));
+    background-attachment: fixed;
   }
 }

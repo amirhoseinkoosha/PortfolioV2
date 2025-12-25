@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -25,20 +25,52 @@ export default function Navbar(props: NavbarProps) {
   const pathName = usePathname();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial scroll position
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 mt-2 px-6 py-8 sm:mt-8 sm:px-14 md:px-20">
+    <motion.header
+      initial={false}
+      animate={{
+        backdropFilter: isScrolled ? "blur(12px)" : "blur(0px)",
+        backgroundColor: isScrolled
+          ? "hsl(var(--background) / 0.8)"
+          : "transparent",
+        boxShadow: isScrolled
+          ? "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
+          : "none",
+      }}
+      transition={{
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+      }}
+      className={classNames(
+        "sticky top-0 z-50 mt-2 px-6 py-8 sm:mt-8 sm:px-14 md:px-20",
+        isScrolled && "border-b border-accent/10",
+      )}
+    >
       <div className="mx-auto flex items-center justify-between lg:max-w-7xl">
         <Link
           href="/"
           className="drop-shadow-teralight flex items-center justify-center"
           aria-label="Return to home page"
         >
-          <div className="relative h-12 w-12 sm:h-14 sm:w-14">
+          <div className="relative h-16 w-16 sm:h-20 sm:w-20">
             <AnimatedLogo />
           </div>
         </Link>
@@ -92,6 +124,6 @@ export default function Navbar(props: NavbarProps) {
         openMenu={isModalOpen}
         setOpenMenu={setIsModalOpen}
       />
-    </header>
+    </motion.header>
   );
 }

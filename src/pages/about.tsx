@@ -10,18 +10,19 @@ export default function About() {
   return (
     <>
       <NextSeo
-        title="About Amit Chauhan | Software Developer"
-        description="Learn more about Amit Chauhan, a dedicated Software Developer with 2 years of experience. Discover the journey, skills, and passion that drive me to create innovative and user-friendly web solutions."
+        title={`About ${siteMetadata.fullName} | ${siteMetadata.jobTitle}`}
+        description={`Learn more about ${siteMetadata.fullName}, a dedicated ${
+          siteMetadata.jobTitle
+        }. ${siteMetadata.summary.substring(0, 150)}...`}
         canonical={`${siteMetadata.siteUrl}/about`}
         openGraph={{
           url: `${siteMetadata.siteUrl}/about`,
-          title: "Learn About Amit Chauhan - Software Developer",
-          description:
-            "Dive into the story of Amit Chauhan, a Software Developer. Uncover the experiences, skills, and passion that fuel a commitment to delivering exceptional web solutions.",
+          title: `Learn About ${siteMetadata.fullName} - ${siteMetadata.jobTitle}`,
+          description: siteMetadata.summary,
           images: [
             {
               url: `${siteMetadata.siteUrl}${siteMetadata.twitterImage}`,
-              alt: "Amit Chauhan - Portfolio Image",
+              alt: `${siteMetadata.fullName} - Portfolio Image`,
             },
           ],
           siteName: siteMetadata.siteName,
@@ -33,8 +34,11 @@ export default function About() {
         additionalMetaTags={[
           {
             property: "keywords",
-            content:
-              "Software Developer portfolio, Software Developer, React Developer, Frontend Developer, Web Developer, JavaScript, HTML, CSS, Professional Journey, Skills, Passion for Web Development",
+            content: `${siteMetadata.jobTitle} portfolio, ${
+              siteMetadata.jobTitle
+            }, React Developer, Frontend Developer, Web Developer, React Native, Next.js, ${siteMetadata.specializations.join(
+              ", ",
+            )}, Professional Journey, Skills`,
           },
         ]}
       />

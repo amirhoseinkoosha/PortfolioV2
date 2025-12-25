@@ -2,36 +2,24 @@ import { type ExperienceShowcaseListItemProps } from "@/components/experience/ex
 
 export const EDUCATION: ExperienceShowcaseListItemProps[] = [
   {
-    title: "Bachelor Of Engineering in Electronics and Telecommunication",
+    title: "Master's Degree - Computer Engineering (Software Engineering)",
     organisation: {
-      name: "Rizvi College Of Engineering",
-      href: "https://eng.rizvi.edu.in/",
+      name: "Islamic Azad University",
+      href: "#",
     },
-    date: "2019-2023",
-    location: "Bandra, Mumbai",
+    date: "Summer 2024 - Present",
+    location: "Iran",
     description:
-      "Relevant courses included Data Structures and Algorithms, Web Design, Cloud Computing, Artificial Neural Network and Database Management.",
+      "Currently pursuing Master's degree in Computer Engineering with specialization in Software Engineering.",
   },
   {
-    title: "Higher Secondary School",
+    title: "Bachelor's Degree - Computer Engineering",
     organisation: {
-      name: "Mithibai College",
-      href: "https://www.mithibai.ac.in/",
+      name: "Islamic Azad University",
+      href: "#",
     },
-    date: "2016-2018",
-    location: "Vile Parle, Mumbai",
-    description:
-      "Completed the course in Electronics Bifocal Science with 68%. Started freelancing making 3D assets for games. Got interested in game development and learned unity and c#",
-  },
-  {
-    title: "Secondary School Education",
-    organisation: {
-      name: "Holy Family High School",
-      href: "https://holyfamilyandheri.org/",
-    },
-    date: "2017-2018",
-    location: "Andheri, Mumbai",
-    description:
-      "Learned good values,dedication and disciplne. Played district football for 5 years.",
+    date: "Completed",
+    location: "Iran",
+    description: "Completed Bachelor's degree in Computer Engineering.",
   },
 ];

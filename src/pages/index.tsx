@@ -13,18 +13,22 @@ export default function Home() {
   return (
     <>
       <NextSeo
-        title="Amit Chauhan | Software Developer"
-        description="Explore the professional portfolio of Amit Chauhan, a skilled Software Developer with 2 years of hands-on experience. Discover innovative projects, expertise in modern web technologies, and a passion for creating seamless user experiences."
+        title={`${siteMetadata.fullName} | ${siteMetadata.jobTitle}`}
+        description={`Explore the professional portfolio of ${
+          siteMetadata.fullName
+        }, a skilled ${siteMetadata.jobTitle}. ${siteMetadata.summary.substring(
+          0,
+          150,
+        )}...`}
         canonical={siteMetadata.siteUrl}
         openGraph={{
           url: siteMetadata.siteUrl,
-          title: "Amit Chauhan - Software Developer",
-          description:
-            "Dive into the world of web development with Amit Chauhan. Discover a Software Developer with 2 years of expertise, showcasing cutting-edge projects and a commitment to crafting exceptional user interfaces.",
+          title: `${siteMetadata.fullName} - ${siteMetadata.jobTitle}`,
+          description: siteMetadata.summary,
           images: [
             {
               url: `${siteMetadata.siteUrl}${siteMetadata.twitterImage}`,
-              alt: "Amit Chauhan - Portfolio Image",
+              alt: `${siteMetadata.fullName} - Portfolio Image`,
             },
           ],
           siteName: siteMetadata.siteName,
@@ -36,8 +40,11 @@ export default function Home() {
         additionalMetaTags={[
           {
             property: "keywords",
-            content:
-              "React Developer, Software Developer, Frontend Developer, Web Developer, JavaScript, HTML, CSS, Portfolio, UI/UX, React.js, Frontend Development, Web Development, JavaScript Developer, Responsive Design",
+            content: `${
+              siteMetadata.jobTitle
+            }, React Developer, Frontend Developer, Web Developer, React Native, Next.js, ${siteMetadata.specializations.join(
+              ", ",
+            )}, Portfolio, UI/UX, Frontend Development, Web Development, Mobile Development`,
           },
         ]}
       />
