@@ -4,10 +4,16 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import FadeUp from "@/animation/fade-up";
 import { siteMetadata } from "@/data/siteMetaData.mjs";
+import {
+  fadeOutSplitTextAnimation,
+  initScrambleTextAnimation,
+  WordAnimation,
+} from "@/gsap/scrambleTextAnimation";
 
 export default function LandingHero() {
   const [scrollY, setScrollY] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   let progress = 0;
   const { current: elContainer } = ref;
@@ -26,6 +32,27 @@ export default function LandingHero() {
     return () => document.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      initScrambleTextAnimation(".split h1", siteMetadata.fullName);
+      fadeOutSplitTextAnimation(".descriptFade");
+      WordAnimation(".jobTitle");
+
+      // const titleElement = titleRef.current;
+      // console.log(titleElement);
+      // if (titleElement) {
+      //   const handleMouseEnter = () => {
+      //     initScrambleTextAnimation(".split h1", siteMetadata.fullName, 0); // بدون delay برای hover
+      //   };
+      //   titleElement.addEventListener("mouseenter", handleMouseEnter);
+
+      //   return () => {
+      //     titleElement.removeEventListener("mouseenter", handleMouseEnter);
+      //   };
+      // }
+    }
+  }, []);
+
   return (
     <motion.section
       animate={{
@@ -39,15 +66,17 @@ export default function LandingHero() {
         <div className="mx-auto max-w-7xl">
           <AnimatePresence>
             <FadeUp key="title-main" duration={0.6}>
-              <h1 className="bg-accent bg-clip-text py-2 text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl">
-                {siteMetadata.fullName}
-              </h1>
-              <span className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
+              <div className="split" ref={titleRef}>
+                <h1 className="bg-accent bg-clip-text py-2 text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl ">
+                  {siteMetadata.fullName}
+                </h1>
+              </div>
+              <span className="jobTitle text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
                 {siteMetadata.jobTitle}
               </span>
             </FadeUp>
             <FadeUp key="description" duration={0.6} delay={0.2}>
-              <div className="mt-8 max-w-3xl text-base font-semibold text-zinc-900 dark:text-zinc-200 sm:text-base md:text-xl">
+              <div className="descriptFade mt-8 max-w-3xl text-base font-semibold text-zinc-900 dark:text-zinc-200 sm:text-base md:text-xl">
                 {siteMetadata.summary.split(".")[0]}. Skilled in{" "}
                 <span className="font-semibold text-accent">React</span>,{" "}
                 <span className="font-semibold text-accent">Next.js</span>,{" "}

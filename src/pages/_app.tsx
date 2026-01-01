@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import MainLayout from "@/layout/main-layout";
 import CursorTrailCanvas from "@/components/cursor-trail-canvas";
 import "@/styles/globals.css";
+import "@/styles/work.css";
 
 const inter = Inter({
   subsets: ["latin"],
