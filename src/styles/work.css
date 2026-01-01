@@ -15,9 +15,9 @@
 } */
 
 :root {
-  --primary-color: hsl(54, 100%, 50%);
-  --text-color: #181818;
-  --color-light: #fff;
+  --primary-color: hsl(var(--accent));
+  --text-color: hsl(var(--foreground));
+  --color-light: hsl(var(--background));
 }
 
 html body {
@@ -42,7 +42,7 @@ ul {
 
 .background {
   font-size: 17vw;
-  color: hsl(0, 0%, 98%);
+  color: hsl(var(--muted));
   font-weight: 800;
   position: fixed;
   top: 50%;
@@ -70,8 +70,13 @@ ul {
   position: absolute;
   /* overflow: hidden; */
   top: 50%;
+  left: 0;
   transform: translate(0, -50%);
   z-index: 200;
+  color: hsl(var(--foreground));
+  padding-left: 5vw;
+  padding-right: 5vw;
+  max-width: 50%;
 }
 
 .section .title__text {
@@ -92,7 +97,7 @@ ul {
   width: 88px;
   height: 4px;
   border-radius: 5px;
-  /* background: var(--primary-color); */
+  background: var(--primary-color);
 }
 
 .title .borderv span:first-child {
@@ -115,7 +120,7 @@ ul {
 .btn {
   display: inline-block;
   font-size: 1.116rem;
-  /* background: var(--primary-color); */
+  background: var(--primary-color);
   line-height: 1;
   font-weight: bold;
   padding: 31px 44px;
@@ -149,7 +154,7 @@ ul {
   height: 100%;
   top: 0;
   right: 0;
-  background-color: #061b36;
+  background-color: hsl(var(--muted));
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
 }
@@ -163,9 +168,9 @@ ul {
   position: absolute;
   overflow-y: hidden;
   right: 4%;
-  bottom: 7%;
+  top: -35%;
   font-size: 8rem;
-  /* color: #fff; */
+  color: hsl(var(--foreground));
   z-index: 200;
   width: 1.7em;
   aspect-ratio: 1/1;
@@ -294,7 +299,7 @@ ul {
 #fp-nav ul li a {
   width: 24px;
   height: 3px;
-  background: #000;
+  background: hsl(var(--foreground));
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;

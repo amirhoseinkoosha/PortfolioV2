@@ -7,7 +7,7 @@ export const PROJECT_SHOWCASE: ProjectShowcaseListItem[] = [
     title: "Meerkat",
     description:
       "Adaptive learning application with a dedicated admin panel for managing questions, gamification logic, rewards, and user progress. Designed scalable frontend architecture for both mobile app and management dashboard. Integrated dynamic content, gamified challenges, and reward systems.",
-    href: "/projects",
+    href: "https://meerkat.school",
     tags: ["React", "React Native", "React", "Next.js"],
     image: {
       LIGHT: "/images/projects/meerkatLight.avif",

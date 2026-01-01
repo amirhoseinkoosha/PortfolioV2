@@ -1,8 +1,9 @@
-import React from "react";
-// import Magentic from "@/components/ui/magentic";
+import React, { useEffect, useRef } from "react";
+import Magentic from "@/components/projects/Magnetic";
 // import { Header } from "@/components/header";
 // import { Bulge } from "../bulge";
-// import { cn } from "@/lib/utils";
+import { cn } from "@/utility/utils";
+import gsap from "gsap";
 export function WorkSection({
   index,
   item,
@@ -19,14 +20,37 @@ export function WorkSection({
   color: "Dark" | "Light";
   length: number;
 }) {
-  // const possibleTailwindClasses = [
-  //   "text-colorDark",
-  //   "text-colorLight",
-  //   "bg-colorDark",
-  //   "bg-colorLight",
-  //   "bg-colorSecondaryDark",
-  //   "bg-colorSecondaryLight",
-  // ];
+  const titleRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLAnchorElement>(null);
+
+  useEffect(() => {
+    const titleElement = titleRef.current;
+    const imageElement = imageRef.current;
+    if (imageElement) {
+      gsap.set(imageElement, { x: "100%" });
+    }
+    if (titleElement && imageElement) {
+      const handleMouseEnter = () => {
+        gsap.fromTo(
+          imageElement,
+          { x: "100%" },
+          { x: "0%", duration: 1, ease: "power2.out" },
+        );
+      };
+      titleElement.addEventListener("mouseenter", handleMouseEnter);
+      return () => {
+        titleElement.removeEventListener("mouseenter", handleMouseEnter);
+      };
+    }
+  }, []);
+  //   const possibleTailwindClasses = [
+  //     "text-colorDark",
+  //     "text-colorLight",
+  //     "bg-colorDark",
+  //     "bg-colorLight",
+  //     "bg-colorSecondaryDark",
+  //     "bg-colorSecondaryLight",
+  //   ];
 
   return (
     <div
@@ -45,6 +69,7 @@ export function WorkSection({
           `}
         >
           <a
+            ref={imageRef}
             className={`image image--works image--works${
               index + 1
             } anime rounded-3xl `}
@@ -63,7 +88,7 @@ export function WorkSection({
               <p className="text-colorLight p-8 ">0{index + 1}</p>
             </div>
           </a>
-          <div className="title ">
+          <div className="title " ref={titleRef}>
             <h2 className="title__text js-letter anime mask font-bold tracking-tight">
               {item.title}
               <br />
@@ -72,9 +97,11 @@ export function WorkSection({
               <span className={`bg-colorSecondary${color}`}></span>
               <span className={`bg-colorSecondary${color}`}></span>
             </div>
-            <p className="title__lead js-letter anime ">{item.description}</p>
+            <p className=" js-letter anime  flex-wrap text-lg">
+              {item.description}
+            </p>
             <div className="btn-wrap js-letter anime">
-              {/* <Magentic
+              <Magentic
                 strength={50}
                 className={`btn text-color${
                   color === "Dark" ? "Light" : "Dark"
@@ -82,45 +109,45 @@ export function WorkSection({
                 href={item.link}
                 target="_blank"
                 scrambleParams={{ text: "Show Me", chars: "-x" }}
-              > */}
-              <p className="shapka">
-                <span className="scrambleText">Show Me</span>
-                <svg
-                  className="ml-4 inline w-[0.8em] -rotate-[75deg] text-inherit" // width="34px"
-                  // height="34px"
-                  viewBox="0 0 14 14"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" // xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-                  <title>arrow-up-right</title>
-                  <g
-                    id="Page-1"
-                    stroke="none"
-                    strokeWidth="2"
-                    fill="none"
-                    fillRule="evenodd"
+              >
+                <p className="shapka">
+                  <span className="scrambleText">Show Me</span>
+                  <svg
+                    className="ml-4 inline w-[0.8em] -rotate-[75deg] text-inherit" // width="34px"
+                    // height="34px"
+                    viewBox="0 0 14 14"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" // xmlns:xlink="http://www.w3.org/1999/xlink"
                   >
+                    <title>arrow-up-right</title>
                     <g
-                      id="Artboard"
-                      transform="translate(-1019.000000, -279.000000)"
-                      stroke="currentColor"
+                      id="Page-1"
+                      stroke="none"
                       strokeWidth="2"
+                      fill="none"
+                      fillRule="evenodd"
                     >
                       <g
-                        id="arrow-up-right"
-                        transform="translate(1026.000000, 286.000000) rotate(90.000000) translate(-1026.000000, -286.000000) translate(1020.000000, 280.000000)"
+                        id="Artboard"
+                        transform="translate(-1019.000000, -279.000000)"
+                        stroke="currentColor"
+                        strokeWidth="2"
                       >
-                        <polyline
-                          id="Path"
-                          points="2.76923077 0 12 0 12 9.23076923"
-                        ></polyline>
-                        <line x1="12" y1="0" x2="0" y2="12" id="Path"></line>
+                        <g
+                          id="arrow-up-right"
+                          transform="translate(1026.000000, 286.000000) rotate(90.000000) translate(-1026.000000, -286.000000) translate(1020.000000, 280.000000)"
+                        >
+                          <polyline
+                            id="Path"
+                            points="2.76923077 0 12 0 12 9.23076923"
+                          ></polyline>
+                          <line x1="12" y1="0" x2="0" y2="12" id="Path"></line>
+                        </g>
                       </g>
                     </g>
-                  </g>
-                </svg>
-              </p>
-              {/* </Magentic> */}
+                  </svg>
+                </p>
+              </Magentic>
             </div>
           </div>
         </div>
@@ -133,10 +160,10 @@ export function WorkSection({
             return (
               <div
                 key={i}
-                // className={cn(
-                //   `h-4 w-1 bg-colorSecondary${color} rounded-full`,
-                //   ` ${i === index ? `h-10 bg-color${color}` : ""}`,
-                // )}
+                className={cn(
+                  `h-4 w-1 bg-colorSecondary${color} rounded-full`,
+                  ` ${i === index ? `h-10 bg-color${color}` : ""}`,
+                )}
               ></div>
             );
           })}
