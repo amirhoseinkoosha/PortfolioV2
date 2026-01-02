@@ -29,6 +29,15 @@ export function WorkSection({
     if (imageElement) {
       gsap.set(imageElement, { x: "100%" });
     }
+    if (titleElement) {
+      gsap.set(titleElement, { x: "-100%" });
+      gsap.to(titleElement, {
+        x: "0%",
+        duration: 1.3,
+        ease: "sine",
+        delay: 0.5,
+      });
+    }
     if (titleElement && imageElement) {
       const handleMouseEnter = () => {
         gsap.fromTo(
@@ -60,6 +69,21 @@ export function WorkSection({
       text-color${color} `}
       key={item.link}
     >
+      <div className="anime gap-6bg-red-500 absolute top-10 z-50 flex w-full items-start justify-center">
+        {Array(length)
+          .fill(0)
+          .map((_, i) => {
+            return (
+              <div
+                key={i}
+                className={cn(
+                  `h-4 w-1 bg-colorSecondary${color} bg-white-500 rounded-full`,
+                  ` ${i === index ? `h-10 bg-color${color}` : ""}`,
+                )}
+              ></div>
+            );
+          })}
+      </div>
       {/* <Header color={color}></Header>
       <Bulge type={color} /> */}
 
@@ -88,7 +112,7 @@ export function WorkSection({
               <p className="text-colorLight p-8 ">0{index + 1}</p>
             </div>
           </a>
-          <div className="title " ref={titleRef}>
+          <div className="title relative z-40" ref={titleRef}>
             <h2 className="title__text js-letter anime mask font-bold tracking-tight">
               {item.title}
               <br />
@@ -151,22 +175,6 @@ export function WorkSection({
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="anime absolute bottom-10 flex w-full items-end justify-center gap-6">
-        {Array(length)
-          .fill(0)
-          .map((_, i) => {
-            return (
-              <div
-                key={i}
-                className={cn(
-                  `h-4 w-1 bg-colorSecondary${color} rounded-full`,
-                  ` ${i === index ? `h-10 bg-color${color}` : ""}`,
-                )}
-              ></div>
-            );
-          })}
       </div>
     </div>
   );

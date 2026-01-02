@@ -9,6 +9,7 @@ import {
   initScrambleTextAnimation,
   WordAnimation,
 } from "@/gsap/scrambleTextAnimation";
+import Magnetic from "./projects/Magnetic";
 
 export default function LandingHero() {
   const [scrollY, setScrollY] = useState(0);
@@ -66,11 +67,33 @@ export default function LandingHero() {
         <div className="mx-auto max-w-7xl">
           <AnimatePresence>
             <FadeUp key="title-main" duration={0.6}>
-              <div className="split" ref={titleRef}>
-                <h1 className="bg-accent bg-clip-text py-2 text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl ">
-                  {siteMetadata.fullName}
-                </h1>
-              </div>
+              <Magnetic
+                strength={50}
+                className={`justify-start `}
+                href={""}
+                target=""
+                scrambleParams={{ text: "Show Me", chars: "-x" }}
+              >
+                <div
+                  className="split pointer-events-auto "
+                  ref={titleRef}
+                  onMouseEnter={() => {
+                    const titleElement = titleRef.current;
+                    console.log(titleElement);
+                    if (titleElement) {
+                      initScrambleTextAnimation(
+                        ".split h1",
+                        siteMetadata.fullName,
+                        0,
+                      );
+                    }
+                  }}
+                >
+                  <h1 className="bg-accent bg-clip-text py-2 text-left text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl">
+                    {siteMetadata.fullName}
+                  </h1>
+                </div>
+              </Magnetic>
               <span className="jobTitle text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
                 {siteMetadata.jobTitle}
               </span>

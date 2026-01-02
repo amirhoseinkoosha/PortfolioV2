@@ -85,7 +85,7 @@ export default function ContactForm({
               <div>
                 <label
                   htmlFor={form.name}
-                  className="inline font-medium text-background"
+                  className="inline font-bold text-background"
                 >
                   {form.label}
                 </label>

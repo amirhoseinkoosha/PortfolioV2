@@ -84,45 +84,46 @@ import React from "react";
 // import { HeaderNavigation } from "@/components/headerNavigation";
 import { PROJECT_SHOWCASE } from "@/data/projects";
 import { WorkSection } from "@/components/projects/workSection";
+import FullpageProviderWork from "@/components/projects/FullPageProviderWork";
 
 export default function Projects() {
   return (
     <>
       {/* <Cursor /> */}
       {/* <HeaderNavigation /> */}
-      {/* <FullpageProviderWork> */}
-      <div id="fullpage">
-        <div className="background"></div>
+      <FullpageProviderWork>
+        <div id="fullpage">
+          <div className="background"></div>
 
-        {PROJECT_SHOWCASE.map((item, index) => {
-          const color = index % 2 !== 0 ? "Light" : "Dark";
-          return (
-            <WorkSection
-              key={index}
-              item={{
-                title: (
-                  <>
-                    {item.title.split(" ").map((word, idx) => (
-                      <React.Fragment key={idx}>
-                        {word}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </>
-                ),
-                description: item.description,
-                link: item.href,
-                imageLink:
-                  item.image[color.toUpperCase() as "LIGHT" | "DARK"] ?? "",
-              }}
-              index={index}
-              length={PROJECT_SHOWCASE.length}
-              color={color as "Dark" | "Light"}
-            />
-          );
-        })}
-      </div>
-      {/* </FullpageProviderWork> */}
+          {PROJECT_SHOWCASE.map((item, index) => {
+            const color = index % 2 !== 0 ? "Light" : "Dark";
+            return (
+              <WorkSection
+                key={index}
+                item={{
+                  title: (
+                    <>
+                      {item.title.split(" ").map((word, idx) => (
+                        <React.Fragment key={idx}>
+                          {word}
+                          <br />
+                        </React.Fragment>
+                      ))}
+                    </>
+                  ),
+                  description: item.description,
+                  link: item.href,
+                  imageLink:
+                    item.image[color.toUpperCase() as "LIGHT" | "DARK"] ?? "",
+                }}
+                index={index}
+                length={PROJECT_SHOWCASE.length}
+                color={color as "Dark" | "Light"}
+              />
+            );
+          })}
+        </div>
+      </FullpageProviderWork>
     </>
   );
 }
