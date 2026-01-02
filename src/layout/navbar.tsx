@@ -67,7 +67,7 @@ export default function Navbar(props: NavbarProps) {
     >
       <div className="mx-auto flex items-center justify-between lg:max-w-7xl">
         <Magnetic
-          strength={100}
+          strength={150}
           className={`drop-shadow-teralight flex items-center  justify-center`}
           href="/"
           target=""
@@ -78,6 +78,15 @@ export default function Navbar(props: NavbarProps) {
             <AnimatedLogo />
           </div>
         </Magnetic>
+        {/* <Magnetic
+          strength={100}
+          className={`drop-shadow-teralight flex items-center  justify-center`}
+          href="/"
+          target=""
+          scrambleParams={{ text: "Show Me", chars: "-x" }}
+          aria-label="Return to home page"
+          suppressHydrationWarning
+        > */}
         <nav className="hidden items-center gap-2 rounded-full px-2 py-2 shadow-md ring-1 ring-zinc-200 backdrop-blur-md dark:ring-accent/50 md:flex">
           <ul className="flex gap-2 text-sm font-medium">
             {props.routes.map((_link, index) => {
@@ -118,6 +127,7 @@ export default function Navbar(props: NavbarProps) {
           </ul>
           <ThemeSwitch />
         </nav>
+        {/* </Magnetic> */}
         <AnimatePresence>
           <MenuLogo open={isModalOpen} toggle={toggleModal} />
         </AnimatePresence>

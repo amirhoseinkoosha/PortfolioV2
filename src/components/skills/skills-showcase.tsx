@@ -36,7 +36,6 @@ export default function SkillsShowcase({ skills }: SkillsShowcaseProps) {
                     duration={0.4}
                     delay={0.1 + index * 0.1}
                     whileInView={!isMobileDebonced}
-                    className="-z-20"
                   >
                     <SkillPill {...pill} />
                   </FadeRight>

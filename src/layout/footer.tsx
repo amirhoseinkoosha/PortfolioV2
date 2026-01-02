@@ -14,11 +14,12 @@ export default function Footer() {
         <a
           href={`mailto:${siteMetadata.email}`}
           target="_blank"
-          className="mb-6 w-full cursor-pointer text-center text-xl font-bold underline sm:text-3xl lg:text-5xl "
+          className="mb-6 w-full cursor-pointer text-center text-xl font-extrabold underline sm:text-3xl lg:text-5xl "
         >
-          <span>{siteMetadata.email.split("@")[0]}</span>
+          {/* <span>{siteMetadata.email.split("@")[0]}</span>
           <br />
-          <span>@{siteMetadata.email.split("@")[1]}</span>
+          <span>@{siteMetadata.email.split("@")[1]}</span> */}
+          <span className="font-extrabold">{siteMetadata.email}</span>
         </a>
         <div className="flex justify-center">
           <ContactButton />

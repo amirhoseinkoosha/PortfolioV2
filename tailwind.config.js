@@ -6,7 +6,10 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        heading: ["var(--font-space)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
       },
+
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

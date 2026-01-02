@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 
 import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "next-themes";
@@ -11,10 +11,22 @@ import CursorTrailCanvas from "@/components/cursor-trail-canvas";
 import "@/styles/globals.css";
 import "@/styles/work.css";
 
-const inter = Inter({
+export const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
   variable: "--font-inter",
+  display: "swap",
+});
+
+export const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+  display: "swap",
+});
+
+export const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export default function App({ Component, pageProps }: AppProps) {

@@ -68,14 +68,14 @@ export default function LandingHero() {
           <AnimatePresence>
             <FadeUp key="title-main" duration={0.6}>
               <Magnetic
-                strength={50}
+                strength={80}
                 className={`justify-start `}
                 href={""}
                 target=""
-                scrambleParams={{ text: "Show Me", chars: "-x" }}
+                scrambleParams={{ text: "Amirhosein Koosha", chars: "-x" }}
               >
                 <div
-                  className="split pointer-events-auto "
+                  className="split pointer-events-auto mb-10"
                   ref={titleRef}
                   onMouseEnter={() => {
                     const titleElement = titleRef.current;
@@ -89,12 +89,13 @@ export default function LandingHero() {
                     }
                   }}
                 >
-                  <h1 className="bg-accent bg-clip-text py-2 text-left text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl">
+                  <h1 className="bg-accent bg-clip-text py-2 text-left text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl ">
                     {siteMetadata.fullName}
                   </h1>
                 </div>
               </Magnetic>
-              <span className="jobTitle text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
+
+              <span className="jobTitle font-mono text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
                 {siteMetadata.jobTitle}
               </span>
             </FadeUp>
