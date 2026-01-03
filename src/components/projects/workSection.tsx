@@ -1,9 +1,14 @@
-import React, { useEffect, useRef } from "react";
+"use client";
+
+import React, { useLayoutEffect, useRef } from "react";
 import Magentic from "@/components/projects/Magnetic";
-// import { Header } from "@/components/header";
-// import { Bulge } from "../bulge";
 import { cn } from "@/utility/utils";
 import gsap from "gsap";
+import { CustomEase } from "gsap/CustomEase";
+// import gsap from "gsap";
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(CustomEase);
+}
 export function WorkSection({
   index,
   item,
@@ -23,9 +28,10 @@ export function WorkSection({
   const titleRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLAnchorElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const titleElement = titleRef.current;
     const imageElement = imageRef.current;
+
     if (imageElement) {
       gsap.set(imageElement, { x: "100%" });
     }
@@ -52,24 +58,23 @@ export function WorkSection({
       };
     }
   }, []);
-  //   const possibleTailwindClasses = [
-  //     "text-colorDark",
-  //     "text-colorLight",
-  //     "bg-colorDark",
-  //     "bg-colorLight",
-  //     "bg-colorSecondaryDark",
-  //     "bg-colorSecondaryLight",
-  //   ];
 
   return (
     <div
       className={`section s${index} ${
         color == "Dark" ? "lightGradient" : "darkGradient"
-      }
-      text-color${color} `}
+      } text-color${color} `}
       key={item.link}
+      suppressHydrationWarning
     >
-      <div className="anime gap-6bg-red-500 absolute top-10 z-50 flex w-full items-start justify-center">
+      {/* MISSING ELEMENTS ADDED HERE:
+          These are needed for the transition animation in FullpageProviderWork
+      */}
+      <div className="rounded__div__up absolute top-0 z-50 w-full bg-black"></div>
+      <div className="rounded__div__down absolute bottom-0 z-50 w-full bg-black"></div>
+
+      {/* Fixed typo: gap-6bg -> gap-6 */}
+      <div className="anime absolute top-10 z-50 flex w-full items-start justify-center gap-6">
         {Array(length)
           .fill(0)
           .map((_, i) => {
@@ -84,14 +89,9 @@ export function WorkSection({
             );
           })}
       </div>
-      {/* <Header color={color}></Header>
-      <Bulge type={color} /> */}
 
       <div className="px-paddingX flex h-[100dvh] w-full items-center">
-        <div
-          className={`fullpage__slide max-w-maxWidth mx-auto
-          `}
-        >
+        <div className={`fullpage__slide max-w-maxWidth mx-auto`}>
           <a
             ref={imageRef}
             className={`image image--works image--works${
@@ -112,7 +112,7 @@ export function WorkSection({
               <p className="text-colorLight p-8 ">0{index + 1}</p>
             </div>
           </a>
-          <div className="title relative z-40" ref={titleRef}>
+          <div className="title  z-40" ref={titleRef}>
             <h2 className="title__text js-letter anime mask font-bold tracking-tight">
               {item.title}
               <br />
@@ -127,7 +127,7 @@ export function WorkSection({
             <div className="btn-wrap js-letter anime">
               <Magentic
                 strength={50}
-                className={`btn text-color${
+                className={`btnShowmemore text-color ${
                   color === "Dark" ? "Light" : "Dark"
                 } bg-color${color} mask`}
                 href={item.link}
@@ -137,11 +137,10 @@ export function WorkSection({
                 <p className="shapka">
                   <span className="scrambleText">Show Me</span>
                   <svg
-                    className="ml-4 inline w-[0.8em] -rotate-[75deg] text-inherit" // width="34px"
-                    // height="34px"
+                    className="ml-4 inline w-[0.8em] -rotate-[75deg] text-inherit"
                     viewBox="0 0 14 14"
                     version="1.1"
-                    xmlns="http://www.w3.org/2000/svg" // xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <title>arrow-up-right</title>
                     <g
